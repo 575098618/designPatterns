@@ -10,6 +10,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import main.com.jeyson.singleton.SingletonDemo01;
+import main.com.jeyson.singleton.SingletonDemo02;
+import main.com.jeyson.singleton.SingletonDemo03;
+import main.com.jeyson.singleton.SingletonDemo04;
 import main.com.jeyson.singleton.SingletonDemo05;
 import main.com.jeyson.singleton.SingletonDemo06;
 
@@ -77,6 +80,103 @@ public class SingletonDemoTest {
 		System.out.println("s3:"+s3);
 		ois.close();
 		
+	}
+	/**
+	 * 测试五种单例模式效率
+	 * 多线程测试环境
+	 */
+	@Test
+	public void testSingletonSpeed(){
+		
+		Long startTime1=System.currentTimeMillis();
+		//10个线程，每个线程调用100000次
+		for(int i=0;i<10;i++){
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(int i=0;i<100000;i++){
+						Object o=SingletonDemo01.getInstance();
+					}
+					
+				}
+			}).start();
+		}
+		Long endTime1=System.currentTimeMillis();
+		System.out.println("饿汉式计时："+(endTime1-startTime1)+"ms");
+		/////////////////////////////////////////////////////////////////
+		
+		Long startTime2=System.currentTimeMillis();
+		//10个线程，每个线程调用100000次
+		for(int i=0;i<10;i++){
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(int i=0;i<100000;i++){
+						Object o=SingletonDemo02.getInstance();
+					}
+					
+				}
+			}).start();
+		}
+		Long endTime2=System.currentTimeMillis();
+		System.out.println("懒汉式计时："+(endTime2-startTime2)+"ms");
+         /////////////////////////////////////////////////////////////////
+		
+		Long startTime3=System.currentTimeMillis();
+		//10个线程，每个线程调用100000次
+		for(int i=0;i<10;i++){
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(int i=0;i<100000;i++){
+						Object o=SingletonDemo03.getInstance();
+					}
+					
+				}
+			}).start();
+		}
+		Long endTime3=System.currentTimeMillis();
+		System.out.println("双重锁计时："+(endTime3-startTime3)+"ms");
+         /////////////////////////////////////////////////////////////////
+		
+		Long startTime4=System.currentTimeMillis();
+		//10个线程，每个线程调用100000次
+		for(int i=0;i<10;i++){
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(int i=0;i<100000;i++){
+						Object o=SingletonDemo04.getInstance();
+					}
+					
+				}
+			}).start();
+		}
+		Long endTime4=System.currentTimeMillis();
+		System.out.println("静态内部类计时："+(endTime4-startTime4)+"ms");
+         /////////////////////////////////////////////////////////////////
+		
+		Long startTime5=System.currentTimeMillis();
+		//10个线程，每个线程调用100000次
+		for(int i=0;i<10;i++){
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(int i=0;i<100000;i++){
+						Object o=SingletonDemo05.INSTANCE;
+					}
+					
+				}
+			}).start();
+		}
+		Long endTime5=System.currentTimeMillis();
+		System.out.println("枚举计时："+(endTime5-startTime5)+"ms");
+         /////////////////////////////////////////////////////////////////
 	}
 }
 
