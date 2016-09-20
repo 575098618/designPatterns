@@ -1,4 +1,9 @@
 package main.com.jeyson.factory.simpleFactory;
+
+import main.com.jeyson.factory.factorymethod.Cellphone;
+import main.com.jeyson.factory.factorymethod.IPhone;
+import main.com.jeyson.factory.factorymethod.Samsung;
+
 /**
  *
  * @Message:  created by Jeyson on 2016年9月20日

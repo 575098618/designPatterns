@@ -2,10 +2,10 @@ package test.com.jeyson.factory;
 
 import org.junit.Test;
 
-import main.com.jeyson.factory.simpleFactory.Cellphone;
-import main.com.jeyson.factory.simpleFactory.IPhone;
+import main.com.jeyson.factory.factorymethod.Cellphone;
+import main.com.jeyson.factory.factorymethod.IPhone;
+import main.com.jeyson.factory.factorymethod.Samsung;
 import main.com.jeyson.factory.simpleFactory.SimplePhoneFactory;
-import main.com.jeyson.factory.simpleFactory.Samsung;
 
 /**
  *
