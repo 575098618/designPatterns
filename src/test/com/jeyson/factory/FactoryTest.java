@@ -4,7 +4,9 @@ import org.junit.Test;
 
 import main.com.jeyson.factory.factorymethod.Cellphone;
 import main.com.jeyson.factory.factorymethod.IPhone;
+import main.com.jeyson.factory.factorymethod.IPhoneFactory;
 import main.com.jeyson.factory.factorymethod.Samsung;
+import main.com.jeyson.factory.factorymethod.SamsungPhoneFactory;
 import main.com.jeyson.factory.simpleFactory.SimplePhoneFactory;
 
 /**
@@ -32,6 +34,17 @@ public class FactoryTest {
 	public void testSimpleFactory(){
 		Cellphone phone=SimplePhoneFactory.getCellphone("iPhone");
 		phone.calling();
+	}
+	
+	/**
+	 * 测试工厂方法
+	 */
+	@Test
+	public void testFactoryMethod(){
+		Cellphone iPhone=new IPhoneFactory().getPhone();
+		Cellphone samsung=new SamsungPhoneFactory().getPhone();
+		iPhone.calling();
+		samsung.calling();
 	}
 	
 }
