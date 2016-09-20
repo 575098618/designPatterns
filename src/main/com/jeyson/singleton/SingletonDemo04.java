@@ -21,7 +21,7 @@ public class SingletonDemo04 {
 		private static final SingletonDemo04 instance=new SingletonDemo04();
 	}
 	//调用的时候才去加载，延迟加载实现
-	public SingletonDemo04 getInstance(){
+	public static SingletonDemo04 getInstance(){
 		return Singleton04ClassInStance.instance;
 	}
 
