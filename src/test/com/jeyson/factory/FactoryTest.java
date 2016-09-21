@@ -2,6 +2,11 @@ package test.com.jeyson.factory;
 
 import org.junit.Test;
 
+import main.com.jeyson.factory.abstractFactory.AbPhoneFactory;
+import main.com.jeyson.factory.abstractFactory.CPU;
+import main.com.jeyson.factory.abstractFactory.Camera;
+import main.com.jeyson.factory.abstractFactory.GoodsPhoneFactory;
+import main.com.jeyson.factory.abstractFactory.Memory;
 import main.com.jeyson.factory.factorymethod.Cellphone;
 import main.com.jeyson.factory.factorymethod.IPhone;
 import main.com.jeyson.factory.factorymethod.IPhoneFactory;
@@ -46,6 +51,18 @@ public class FactoryTest {
 		iPhone.calling();
 		samsung.calling();
 	}
-	
+	/**
+	 * 抽象工厂
+	 */
+	@Test
+	public void testAbstractFactory(){
+		AbPhoneFactory phone=new GoodsPhoneFactory();
+		CPU cpu=phone.getCPU();
+		cpu.run();
+		Camera camera=phone.getCamera();
+		camera.take();
+		Memory memory=phone.getMemory();
+		memory.work();
+	}
 }
 
